@@ -31,7 +31,7 @@ const FormSelect = (props: Props): JSX.Element => {
               if (selected?.length === 0) {
                 return <Typography variant="caption">City</Typography>;
               }
-              return selected;
+              return selected ?? value;
             }}>
           {
             items.map((item: Item) => {
