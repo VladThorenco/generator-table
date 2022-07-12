@@ -1,27 +1,28 @@
 import React from 'react';
 import {Box} from '@mui/material';
 import {ModeModal} from 'constants/enum';
-import ModalVertical from 'components/forms/vertical';
-import ModalHorizontal from 'components/forms/horizontal';
+import FormVertical from 'components/forms/vertical';
+import FormHorizontal from 'components/forms/horizontal';
 
 interface Props {
   mode: 'vertical' | 'horizontal';
+  formik: any;
 }
 
 const Form = (props: Props): JSX.Element => {
-  const {mode} = props;
+  const {mode, formik} = props;
 
   const renderForm = () => {
     switch (mode) {
       case ModeModal.HORIZONTAL:
-        return <ModalHorizontal/>;
-      default:
-        return <ModalVertical/>;
+        return <FormHorizontal formik={formik}/>;
+      case ModeModal.VERTICAL:
+        return <FormVertical formik={formik}/>;
     }
   };
 
   return (
-      <Box className="Modal">
+      <Box className="Form">
         {renderForm()}
       </Box>
   );

@@ -1,16 +1,23 @@
 import React from 'react';
 import {Box} from '@mui/material';
+import {useSelector} from 'react-redux';
+import RootState from '@reducers/tables/interface';
+import TableItem from 'components/tables-list/table';
+import {styles} from './styles';
 
+const TablesList = (): JSX.Element => {
+  const {listTable} = useSelector((state: RootState) => state.tables);
 
-interface Props {
-  tables: [];
-}
-
-const TablesList = (props: Props) => {
-  const {tables} = props;
   return (
-      <Box>
-      </Box>
+      <>
+        {
+          listTable.map((table) => (
+              <Box sx={styles.containerTable} key={table.id}>
+                <TableItem table={table}/>
+              </Box>
+          ))
+        }
+      </>
   );
 };
 

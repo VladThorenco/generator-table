@@ -1,5 +1,5 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import tables from '../reducers/tables/index';
+import tables from './tables';
 
 const rootReducer = combineReducers({
   tables,

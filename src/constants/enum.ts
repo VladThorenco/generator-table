@@ -1,4 +1,9 @@
 export enum ModeModal {
-  HORIZONTAL = 'vertical',
+  HORIZONTAL = 'horizontal',
   VERTICAL = 'vertical'
 }
+
+export enum TableId {
+  ROOT = 'root',
+}
+
