@@ -33,11 +33,11 @@ const ModalForm = (props: Props): JSX.Element => {
 
   const formik = useFormik({
     initialValues: {
-      id: currentRow.id,
-      name: currentRow.name,
-      surName: currentRow.surName,
-      age: currentRow.age,
-      city: currentRow.city,
+      id: currentRow?.id,
+      name: currentRow?.name,
+      surName: currentRow?.surName,
+      age: currentRow?.age,
+      city: currentRow?.city,
     } as FormVerticalState,
     enableReinitialize: true,
     onSubmit: values => {

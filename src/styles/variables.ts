@@ -7,6 +7,7 @@ const actionDelete = '#B0263D';
 const colorBorderTable = '#EBEBEB';
 const borderSelect = '#E6ECEF';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   white,
   surfaceColor,
