@@ -24,7 +24,7 @@ const ModalForm = (props: Props): JSX.Element => {
     if (table.id === idTable) {
       table.rows.forEach((row: RowTable) => {
         if (row.id === idRow) {
-          acc = row;
+          acc = {...row};
         }
       });
     }

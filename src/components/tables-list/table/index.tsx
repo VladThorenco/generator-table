@@ -21,7 +21,6 @@ const TableItem = (props: Props): JSX.Element => {
 
   const editRowCurrentTable = (rowId: string) => {
     idRow.current = rowId;
-    debugger;
     setOpen(true);
   };
 
@@ -69,10 +68,7 @@ const TableItem = (props: Props): JSX.Element => {
                     </TableCell>
                     <TableCell sx={styles.tableCellBody}>
                       <Box sx={styles.wrapperTableActions}>
-                        <Typography variant="caption" sx={styles.actionsEdit} onClick={() => {
-                          console.log('-- table.rows --', table.rows);
-                          editRowCurrentTable(row.id);
-                        }}>
+                        <Typography variant="caption" sx={styles.actionsEdit} onClick={() => editRowCurrentTable(row.id)}>
                           Edit
                         </Typography>
                         <Typography variant="caption" sx={styles.actionsDelete} onClick={() => removeRowCurrentTable(row.id)}>
