@@ -10,11 +10,31 @@ import {tablesSliceActions} from 'reducers/tables';
 import {styles} from './styles';
 import {v4} from 'uuid';
 import {validationsSchema} from 'components/forms/validate';
-import RootState from '@reducers/tables/interface';
+import RootState, {RowTable} from '@reducers/tables/interface';
 
 const App = () => {
   const dispatch = useDispatch();
   const {listTable} = useSelector((state: RootState) => state.tables);
+
+  const onSubmitValues = (values: RowTable) => {
+    if (!listTable.length) {
+      const table = {
+        id: 'root',
+        headers: ['Name', 'Surname', 'Age', 'City'],
+        rows: [{
+          id: v4(),
+          ...values
+        }],
+      };
+      dispatch(tablesSliceActions.createTable({table}));
+    } else {
+      dispatch(tablesSliceActions.addValueToTable({
+        id: v4(),
+        ...values
+      }));
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -24,22 +44,7 @@ const App = () => {
     } as FormVerticalState,
     validationSchema: validationsSchema,
     onSubmit: values => {
-      if (!listTable.length) {
-        const table = {
-          id: 'root',
-          headers: ['Name', 'Surname', 'Age', 'City'],
-          rows: [{
-            id: v4(),
-            ...values
-          }],
-        };
-        dispatch(tablesSliceActions.createTable({table}));
-      } else {
-        dispatch(tablesSliceActions.addValueToTable({
-          id: v4(),
-          ...values
-        }));
-      }
+      onSubmitValues(values);
       formik.resetForm();
     }
   });
